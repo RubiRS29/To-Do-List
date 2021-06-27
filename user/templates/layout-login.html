@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+{% block content %}
+
+    <div class="container-xl bg-white py-5 px-5 border-bg-w " >
+        <div class="row">
+            <div class="col-lg container-center">
+                <img src="{% static 'img/login-img.png' %}" alt=""  class="img-fluid">
+            </div>
+            <div class="col-lg">
+                {% block log-layout %}
+                
+                {% endblock log-layout %}
+            </div>
+        </div>
+       
+    </div>
+
+{% endblock content %}

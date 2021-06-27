@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% load static  %}
+
+
+
+{% block content %}
+
+
+    {% comment %} Mensajes de logout {% endcomment %}
+    {% if messages %}
+        <div class="alert alert-pink alert-warning alert-dismissible fade show" role="alert">
+        {% for msg in  messages  %}
+            <p> {{msg}}</p> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {% endfor %}
+        </div>
+    {% endif %}
+
+
+    {% comment %} aqui va el codigo del inicio de l index :D {% endcomment %}
+    <div class="container-xdl ">
+        <div class="row m-auto ">
+            <div class="col col-6 ">
+                <h1 class="display-1 txt-index">
+                    Start on List-List 
+                    Right Now
+                </h1>
+                <div class="text-center">
+
+                    <a class="purple" href="#"><i class="bi bi-box-arrow-in-right me-2"></i>Sing up</a>
+                </div>
+            </div>
+
+            <div class="col ">
+                <img src="{% static 'img/index.png' %}" alt=""  class="img-fluid">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container my-5">
+        {% include 'about.html' %}
+    </div>
+{% endblock content %}
