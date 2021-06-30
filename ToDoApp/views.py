@@ -4,15 +4,32 @@ from django.contrib.auth.decorators import login_required
 from toDoTasks.forms import TaskForm
 from formLists.forms import ListForm
 
+from toDoTasks.utilities import count_task, all_task
+from toDoTasks.models import Task
+
+
 from user.models import User
+
+import datetime
+
 
 @login_required(login_url='/user/login_view')
 def index(request):
+
+    today = datetime.datetime.now()
+    tomorrow = today + datetime.timedelta(days=1)
 
     form_task = TaskForm( request.POST or None )
     form_list = ListForm( request.POST or None )
     user = request.user
     gretting = User.get_gretting( user ) 
+
+    count_task = all_task(user , today).count()
+    task_today = all_task(user , today)
+    
+
+    allTask = all_task( user , tomorrow)
+
 
     if request.method == 'POST' and form_task.is_valid():
         formTask = form_task.save( commit=False )       
@@ -33,4 +50,8 @@ def index(request):
         'form_task': form_task, 
         'form_list': form_list, 
         'gretting' : gretting,
+        'countTask' : count_task,
+        'task_today' : task_today,
+        'all_task' : allTask,
+        
     })

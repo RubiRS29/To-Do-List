@@ -1,0 +1,40 @@
+{% load static  %}
+
+<nav class="navbar navbar-expand-lg navbar-light nav-toDo ">
+    <div class="container-fluid nav-list mx-5">
+            <a class="navbar-brand nav-toDo" href="/">
+                <img src="{%static 'img/icono.png'%}" width="200" height="100" alt=""/>
+            </a>
+            <button class="navbar-toggler to-button" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            >
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse to-tasks-list " id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item  me-5">
+                        <a class="nav-link active" aria-current="page" href="#">Today</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Comming...</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">My Lists</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="d-flex actions ">
+                <a class="btn-add me-5 " type="submit"><i class="bi bi-plus "></i></a>
+                <a href="#" class="me-5"><i class="bi bi-brightness-high-fill"></i></a>
+                <div class="row">
+                    <div class="me-5">
+                        <img src="{%static 'img/1.png'%}" width="67" height="60" alt=""/>
+                        <i class="bi bi-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+    </div>
+</nav>  

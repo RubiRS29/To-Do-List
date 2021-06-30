@@ -3,8 +3,10 @@ from django import forms
 
 from .models import Task
 
+from formLists.models import List
+
 class TaskForm(forms.ModelForm):
-    title = forms.CharField(max_length=150 ,widget= forms.TextInput(
+    title = forms.CharField(max_length=150 , widget= forms.TextInput(
         attrs={'class': 'form-control form-title'}
     ) )
 
@@ -14,10 +16,8 @@ class TaskForm(forms.ModelForm):
                 }
     ) )
 
-    listAdd = forms.CharField(max_length=150 ,widget= forms.TextInput(
-        attrs={'class': 'select-list'}
-    ) )
-
+    listAdd = forms.ModelChoiceField( queryset = List.objects.all() , required=False , widget= forms.Select(
+        attrs={'class': 'select-list'}))
     class Meta:
         model = Task
         fields = ("title" , "date" , "listAdd" )

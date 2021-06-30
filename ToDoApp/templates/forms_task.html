@@ -1,0 +1,44 @@
+<div class="form-hide form-show">
+            <div class="container my-5 form-card position-absolute top-50 start-50 translate-middle ">
+                <form method="POST">
+            
+                    
+                    {% csrf_token %}
+                    
+                    <h2 class="text-wlc ms-3">New Task</h2>
+                    <div class="container task-form">
+                    
+                        <div class="form-floating mb-3">
+                            {{form_task.title}}
+                            <label for="floatingInput">e.g. Learning python</label>
+                        </div>
+
+                        <div class="row ">
+                            <div class="col-5">
+                                {{form_task.date}}
+                                {{form_task.listAdd}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-login mt-3 form-btn">Add Task</button>
+                </form> 
+            </div> 
+        </div>
+
+
+        <div class="form-hide form-show-list">
+            <div class="container my-5 form-card position-absolute top-50 start-50 translate-middle ">
+                <form method="POST" >                   
+                    {% csrf_token %}
+                    <h2 class="text-wlc ms-3">New Task</h2>
+                    <div class="container task-form">
+                        <div class="form-floating mb-3">
+                            {{form_list.title}}
+                            <label for="floatingInput">e.g. Learning python</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-login mt-3 form-btn">Add Task</button>
+                </form> 
+            </div> 
+        </div>
