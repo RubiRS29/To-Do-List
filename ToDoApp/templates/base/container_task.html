@@ -1,13 +1,18 @@
+{% url 'to-do-app:ToDoList' as index_app %}
+{% url 'to-do-app:list_app' as list_app %}
+{% url 'to-do-app:schedule_app' as schedule_app %}
+
+
 <div class="container-xxl">
             <div class="row">
                 <div class="col-3 mt-5 nav-lateral">
                     <ul class="list-group ">
-                        <li class="active" aria-current="true"><i class="bi bi-calendar-check"></i> Today</li>
-                        <li class=""> <i class="bi bi-calendar-week"></i> Schedule</li>
-                        <li class=""> <i class="bi bi-list-check"></i> My Lists </li>
+                    
+                        <a href="{{index_app}}" class="{% if request.path == index_app %} active{% endif %} mb-5" ><i class="bi bi-calendar-week"></i> Today </a>
+                        <a href="{{list_app}}"  class="{% if request.path == list_app %} active{% endif %} my-5" ><i class="bi bi-calendar-week"></i> My list </a>
+                        <a href="{{schedule_app}}"  class="{% if request.path == schedule_app %} active{% endif %} mt-5 "><i class="bi bi-calendar-week"></i> Eschedule </a>
                     </ul>
                 </div>
-
 
                 <div class="col">
                     <div class="container mt-5">
@@ -15,7 +20,7 @@
                             <div class="row">
                                 <div class="col-9 ">
                                     <h2 class="text-font text-wlc">{{gretting}}</h2>
-                                    <p class="ms-5 fs-4">Here your tasks for today</p>
+                                    <p class="ms-5 fs-4">{{text_info}}</p>
                                 </div>
                                 <div class="col-3 ">
                                     <div class="container-list text-center py-2 center">
@@ -35,7 +40,7 @@
                 
                 {% comment %} aqui van las tasks {% endcomment %}
                             <div class="container">
-                                {% for task in task_today %}
+                                {% for task in my_list_or_task %}
                                 <div class="card mb-5 py-4 px-4 cart-ntg" id="1">
                                     <div class="row">
                                             <div class="col">
@@ -47,11 +52,11 @@
                                             </div>
                                         <div class="col-2">
                                             <div class="row edit-dlt">
-                                                <div class="col ">
+                                                <div class="col">
                                                     <i class="bi bi-pencil-square "></i>
                                                 </div>
-                                                <div class="col ">
-                                                    <i class="bi bi-x-square "></i>
+                                                <div class="col" >
+                                                    <a href="{% url 'to-do-app:delete' task.id  %}"> <i class="bi bi-x-square" ></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -74,8 +79,8 @@
                                                 <div class="col ">
                                                     <i class="bi bi-pencil-square "></i>
                                                 </div>
-                                                <div class="col ">
-                                                    <i class="bi bi-x-square "></i>
+                                                <div class="col" id="{{ task.id }}">
+                                                    <i class="bi bi-x-square" > </i>
                                                 </div>
                                             </div>
                                         </div>

@@ -1,5 +1,11 @@
 {% load static  %}
 
+
+{% url 'to-do-app:ToDoList' as index_app %}
+{% url 'to-do-app:list_app' as list_app %}
+{% url 'to-do-app:schedule_app' as schedule_app %}
+
+
 <nav class="navbar navbar-expand-lg navbar-light nav-toDo ">
     <div class="container-fluid nav-list mx-5">
             <a class="navbar-brand nav-toDo" href="/">
@@ -15,13 +21,13 @@
             <div class="collapse navbar-collapse to-tasks-list " id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item  me-5">
-                        <a class="nav-link active" aria-current="page" href="#">Today</a>
+                        <a class="nav-link active" aria-current="page" href="{{index_app}}">Today</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Comming...</a>
+                        <a class="nav-link active" aria-current="page" href="{{list_app}}">Schedule</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">My Lists</a>
+                        <a class="nav-link active" aria-current="page" href="{{schedule_app}}">My Lists</a>
                     </li>
                 </ul>
             </div>

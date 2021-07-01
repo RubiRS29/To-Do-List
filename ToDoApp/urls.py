@@ -1,13 +1,16 @@
 from django.urls import path
 
-from .import views
+from .views import index, ListView , schedule_View , DeleteTask
 
 app_name = 'to-do-app'
 
 urlpatterns = [
     # ... snip ...
-    path('' , views.index , name='ToDoList'),
-    # path('login_view' , views.login_view , name='login_view'),
-    # path('logout_view' , views.logout_view , name='logout_view'),
+    path('' , index , name='ToDoList'),
+    path('Lists' , ListView , name='list_app'),
+    path('Schedule' , schedule_View , name='schedule_app'),
+    path('<int:id>' , DeleteTask , name='delete'),
+    path('Lists/<int:id>' , DeleteTask , name='delete'),
+    path('Schedule/<int:id>' , DeleteTask , name='delete'),
     
 ]
